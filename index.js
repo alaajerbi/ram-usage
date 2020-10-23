@@ -3,9 +3,6 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-// set the view engine to ejs
-app.set('view engine', 'ejs');
-
 function formatBytes(bytes, decimals = 2) {
     if (bytes === 0) return '0 Bytes';
 
@@ -23,7 +20,7 @@ app.get('/', (req, res) => {
   const freeMemory = os.freemem();
   const usedMemory = totalMemory - freeMemory;
 
-  res.render(__dirname + '/public/index', {
+  res.json({
       freememory_bytes:  freeMemory,
       freememory_formatted: formatBytes(freeMemory),
       totalmemory_bytes: totalMemory,
