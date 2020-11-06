@@ -2,6 +2,7 @@ const os = require('os')
 const express = require('express')
 const app = express()
 const port = 5000
+const fact = require('./fact');
 
 function formatBytes(bytes, decimals = 2) {
     if (bytes === 0) return '0 Bytes';
@@ -15,12 +16,13 @@ function formatBytes(bytes, decimals = 2) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
-app.get('/', (req, res) => {
+
+app.get('/metrics', (req, res) => {
   const totalMemory = os.totalmem();
   const freeMemory = os.freemem();
   const usedMemory = totalMemory - freeMemory;
 
-  res.status(200).json({
+  res.json({
       freememory_bytes:  freeMemory,
       freememory_formatted: formatBytes(freeMemory),
       totalmemory_bytes: totalMemory,
@@ -30,6 +32,11 @@ app.get('/', (req, res) => {
   });
 })
 
+app.get('/fact', (req, res) => {
+  const { n } = req.query;
+
+  res.json(fact(n));
+})
 
 
 app.listen(port, () => {

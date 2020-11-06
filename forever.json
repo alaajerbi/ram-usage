@@ -1,0 +1,11 @@
+{
+    "uid": "app",
+    "append": true,
+    "watch": true,
+    "script": "index.js",
+    "sourceDir": "/home/ubuntu/app",
+    "logFile": "/home/ubuntu/logs/forever.log",
+    "outFile": "/home/ubuntu/logs/out.log",
+    "errFile": "/home/ubuntu/logs/error.log"
+}
+
