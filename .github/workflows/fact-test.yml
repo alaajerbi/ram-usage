@@ -1,0 +1,23 @@
+name: Test fact
+
+on: 
+  push:
+    branches: [master]
+
+    jobs: 
+      build: 
+        name: Test build
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Set up Node
+          uses: actions/setup-node@v2
+          with:
+            node-version: '15'
+            check-latest: true
+          
+        - name: Check out code 
+          uses: actions/checkout@v2
+
+        - name: Build
+          run: make install
