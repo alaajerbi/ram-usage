@@ -1,8 +1,8 @@
-name: Test fact
+name: test-workflow
 
 on: 
   push:
-    branches: [master]
+    branches: [main]
 
 jobs: 
   build: 
