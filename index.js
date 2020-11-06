@@ -1,7 +1,7 @@
 const os = require('os')
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 5000
 
 function formatBytes(bytes, decimals = 2) {
     if (bytes === 0) return '0 Bytes';
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   const freeMemory = os.freemem();
   const usedMemory = totalMemory - freeMemory;
 
-  res.json({
+  res.status(200).json({
       freememory_bytes:  freeMemory,
       freememory_formatted: formatBytes(freeMemory),
       totalmemory_bytes: totalMemory,
